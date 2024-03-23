@@ -39,6 +39,9 @@
     margin: 0;
     padding: 0;
 }
+a {
+    text-decoration: none;
+}
 body {
     position: relative;
     background: url("../img/greenhaze_bg.jpg") no-repeat center;
@@ -180,8 +183,17 @@ main.error {
     text-align: center;
 }
 .mix {
-    color: white;
+    color: white !important;
     mix-blend-mode: difference;
+}
+.mix > a:link {
+    color: white !important;
+}
+.mix > a:focus {
+    color: white !important;
+}
+.mix > a:visited {
+    color: white !important;
 }
 .letter.E {
     color: white;
