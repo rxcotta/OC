@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HAZE</title>
+        <link rel="icon" href="./img/greenhaze_icon.png" />
+        <link rel="stylesheet" href="./style/greenhaze.css" />
+        <script>
+            window.onload = () => {
+                var device = 1;
+                if (navigator.userAgent.indexOf("iPhone") > -1 || navigator.userAgent.indexOf("Android") > -1) {
+                    document.querySelector("main").classList.add("mobile");
+                    document.querySelector(".tooltiptext").classList.add("mobile");
+                    device = 0;
+                }
+                const targets = document.querySelectorAll(".tooltip");
+                const tooltip = document.querySelector(".tooltiptext"); 
+                targets.forEach(element => {
+                    if (device == 0) {
+                        element.addEventListener('click', event => {
+                            tooltip.innerHTML = `<span><strong>${element.dataset.title}</strong><br /><br />${element.dataset.content}</span>`
+                            tooltip.style.left = event.pageX + "px";
+                            tooltip.style.top = event.pageY + "px";
+                            tooltip.style.opacity = 1;
+                        });
+                    }
+                    element.addEventListener('mouseenter', event => {
+                        tooltip.innerHTML = `<span><strong>${element.dataset.title}</strong><br /><br />${element.dataset.content}</span>`
+                        tooltip.style.left = event.pageX + "px";
+                        tooltip.style.top = event.pageY + "px";
+                        tooltip.style.opacity = 1;
+                    });
+                    element.addEventListener('mouseout', event => {
+                        const clientRect = element.getBoundingClientRect();
+                        if (event.pageX < clientRect.left || event.pageX > clientRect.right || event.pageY < clientRect.top || event.pageY > clientRect.bottom) {
+                            const toolRect = tooltip.getBoundingClientRect();
+                            if (event.pageX < toolRect.left || event.pageX > toolRect.right || event.pageY < toolRect.top || event.pageY > toolRect.bottom) {
+                                    tooltip.style.opacity = 0;
+                            }
+                        }
+                    });
+                    tooltip.addEventListener('mouseout', event => {
+                        const toolRect = tooltip.getBoundingClientRect();
+                        if (event.pageX < toolRect.left || event.pageX > toolRect.right || event.pageY < toolRect.top || event.pageY > toolRect.bottom) {
+                            tooltip.style.opacity = 0;
+                        }
+                    });
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <main>
+            <div class="title tooltip" data-title="Callsign of Maj. Clasby" data-content="Colleagues chose his callsign as 'Haze' because of two reasons: 1. Refering to his unequaled piloting skills, rumors said that Clasby's plane wasn't even scratched a single time. 2. Refering to his distant personality. Despite his polite manners, nobody seemed able to get close to him.">
+                <h1>H</h1><h1>A</h1><h1>Z</h1><h1>E</h1>
+            </div>
+            <div class="sub title">
+                <h2>T H E</h2><h2>B L A Z E</h2><h2>O F</h2><h2>H A Z E</h2><h2>K I L L S</h2><h2>T H Y</h2><h2>G A Z E</h2>
+            </div>
+            <div class="content">
+                <h3 class="mix">Hugh Clasby</h3>
+                <h5 class="mix tooltip" data-title="Position in the U. S. Air Force" data-content="Before transfering to the FTAF, Clasby was originally affiliated to the 27th Fighter Squadron, a unit of the USAF 1st Operations Group from Second Lieutenant to Captin. As a fighter pilot, he participated in the European and Mediterranean theaters of operation. It was the highest scoring unit of the group during WWII.">Major, Instructor of the Flying Training Air Force</h5>
+                <div class="hashtags">
+                    <h4 class="mix tooltip" data-title="Character: No 1." data-content="Clasby is definitely a sociable and cultured individual. However this doesn't mean that he is an easy person. Actually, it is unsure whether it is possible to befriend Clasby. His empathy is friendly but hollow, "># Third-person_narrator</h4>
+                    <h4 class="mix tooltip" data-title="Character: No 2." data-content="He is no psychopath; even though he distances himself with everyone, inside Clasby has a high moral sensitivity. His emotions are relatively easy  to trigger, revealing his fragility."># Warm-hearted</h4>
+                    <h4 class="mix tooltip" data-title="Character: No 3." data-content="Clasby carries a number of vulnerabilities: barely not blind, being a retired pilot and stuck in a rut—both because of glaucoma—living as a left-handed person, and unmarried til this age. He is constantly conscious of the fact even in the most unexpected times; so to others, his reactions may seem out of the blue."># Victim_mentality</h4>
+                </div>
+                <div class="stats">
+                    <h5 class="mix tooltip" data-title="Personal Information" data-content="Born in February 16th 1912, Clasby lived in Minnesota until he attended Stanford University in California. During his fighter pilot years he was in Virginia but now as an instructor, serves in Luisiana. He also lost some muscle weight, as he no longer flies a plane.">42yrs | Male | 185cm | 78kg</h5>
+                    <h5 class="mix tooltip" data-title="Main Attributes" data-content="Despite his current situation, Clasby remains to be a competent soldier and a scholar. The only thing he lacks is mentality, which kept fading due to the aftermath of the war and of course, his loss of eyesight.">STR 4 | INT 5 | POW 2 | LUK 4</h5>
+                </div>
+                <div class="other">
+                    <h5 class="mix tooltip" data-title="Ethnicity" data-content="The Clasbys moved to the States a hundred years ago, leaving their homeland devastated by the Great Famine. Yet they are still proud of their origin, and as any Irishman would, they detest being called English.">Irish American</h5>
+                    <h5 class="mix tooltip" data-title="The Stanford Experiment" data-content="Clasby went through the ROTC program at Stanford, and paralleled studying psychology and taking officer classes. He continued his studies after the war and returned to Stanford for commissioned education.">Maters Degree in Psychology from Stanford University</h5>
+                    <h5 class="mix tooltip" data-title="Visual Impairment" data-content="The hazy, pale green eyes were originally a clear color of light brown. There were faint signs of the disease, but were overlooked until the harm was worsened to a serious degree. Doctors prescribed pilocarpine and acetazolamide to him, but it is limited in preventing deterioration.">Primary Open Angle Glaucoma</h5>
+                    <h5 class="mix tooltip" data-title="Insignificant Minority" data-content="As normal families tend to do, Clasby's parents tried to &quot;correct&quot; his dominant hand, but failed. He is quite proud of it, regardless the insecurity it creates.">Left-Handed</h5>
+                </div>
+            </div>
+            <div class="end quote">
+                <hr />
+                <div class="wrap"><h2>NOTHING CAN MAKE ME HUMAN,<br />BECAUSE I AM HUMAN IN AND OF ITSELF.</h2></div>
+            </div>
+            <div class="end title">
+                <h1>G</h1><h1>R</h1><h1 class="letter E">E</h1><h1 class="letter Y">Y</h1><h1 class="letter E">E</h1><h1>N</h1>
+            </div>
+        </main>
+        <span class="tooltiptext"></span>
+    </body>
+</html>
